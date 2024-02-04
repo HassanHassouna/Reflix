@@ -1,0 +1,25 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start; /* align navbar to the left */
+}
+
+.navbar a {
+    margin-top: 10px;
+    margin-left: 10px;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 16px;
+    font-size: 36px;
+    color: white;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+}
