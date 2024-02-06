@@ -25,7 +25,7 @@ const users = [
     }
 ];
 
-function Landing(props) {
+function Landing() {
     return (
         <div>
             <h1>Who's Watching</h1>

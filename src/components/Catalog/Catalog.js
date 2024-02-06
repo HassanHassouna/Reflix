@@ -1,5 +1,6 @@
 import React from 'react';
 import {useLocation} from "react-router-dom";
+import Movie from "./Movie";
 import Search from "../Search/Search";
 import './Catalog.css';
 
@@ -55,7 +56,6 @@ function Catalog(props) {
 
 
     const handleBudget = (movie) => {
-        console.log("movie.isRented", movie.isRented)
         if (movie.isRented) {
             setBudget(budget - 3);
         } else {
@@ -89,28 +89,12 @@ function Catalog(props) {
                 </div> : ""
             }
             <div className="catalog">
-
                 {catalog.filter((movie) => {
                     return movie.title.toLowerCase().includes(search.toLowerCase());
                 }).map((movie, index) => {
                     return (
-                        <div key={index} className="movie">
-                            <img width={50} src={movie.img} alt={movie.title}/>
-                            <h3>{movie.title}</h3>
-                            <button disabled={
-                                budget < 3 || movie.isRented
-                            } onClick={() => {
-                                if (movie.isRented) {
-                                    setRented(rented.filter((rentedMovie) => {
-                                        return rentedMovie.id !== movie.id;
-                                    }))
-                                } else {
-                                    setRented([...rented, movie]);
-                                }
-                                movie.isRented = !movie.isRented;
-                                handleBudget(movie);
-                            }}>{movie.isRented ? "Unrent" : "Rent"}</button>
-                        </div>
+                        <Movie key={index} movie={movie} index={index} rented={rented} setRented={setRented}
+                               budget={budget} handleBudget={handleBudget}/>
                     )
                 })}
             </div>
